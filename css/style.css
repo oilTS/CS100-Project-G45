@@ -25,7 +25,8 @@ nav {
 
 .menu li {
   list-style: none;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-right: 2.5rem;
   text-align: center;
   transition: 0.5s;
 }
@@ -69,6 +70,7 @@ a {
 
 .span1 {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  margin-left: 1rem;
 }
 
 .grid-container {
@@ -89,16 +91,10 @@ a {
 
 .TS {
   border-radius: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .NE {
   border-radius: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /*mobile*/
@@ -163,17 +159,11 @@ a {
 
 .three {
   grid-area: three;
-  list-style-position: inside;
-  margin-left: 4rem;
 }
 
 .four {
   grid-area: four;
   
-}
-
-.five {
-  grid-area: five;
 }
 
 .footer {
