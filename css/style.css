@@ -45,6 +45,10 @@ a {
   font-size: 1.5rem;
 }
 
+.TS {
+  border-radius: 50%;
+}
+/*respon navbar*/
 @media screen and (max-width:576px) {
   .logo {
     margin-bottom: 1.5rem;
@@ -87,7 +91,7 @@ a {
   grid-template-columns: repeat(3,1fr);
   grid-template-rows: repeat(auto,auto);
   grid-template-areas: "one two two"
-                       "three three four"
+                       "three four four"
                        "five six seven"
                        "footer footer footer"
   
@@ -105,23 +109,7 @@ a {
                          "seven"
                          "footer"
   }
-  .vdo {
-    transition: 1s;
-  }
-  .img1 {
-    margin: auto;
-    transition: 1s;
-  }
-  .img3 {
-    width: 80%;
-    height: 80%;
-    transition: 1s;
-  }
-  .img9 {
-    width: 80%;
-    height: 80%;
-    transition: 1s;
-  }
+  
   .two {
     margin: auto;
   }
@@ -140,17 +128,7 @@ a {
   }
 
   @media  screen and (max-width:768px) and (min-width:576px) {
-    .img9 {
-      width: 80%;
-      height: 80%;
-      transition: 1s;
-    }
-    .img3 {
-      transition: 1s;
-    }
-    .img1 {
-      transition: 1s;
-    }
+   
     .grid-container {
       grid-template-columns: repeat(2,1fr);
       grid-template-areas: "one two"
@@ -174,27 +152,11 @@ a {
   }
   }
 
-.img1 {
-  float: left ;
-  border-radius: 50% ;
-  margin-right: 35px ;
-  margin-left: 50px;
-  position : relative ;
-  z-index: 2 ;
-  transition:1s;
-}
-
 .ig1 {
   display: block;
   position: relative;
   margin-top: 0.5rem;
   margin-left: 2rem;
-}
-
-.gif {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .text1 {
@@ -248,20 +210,6 @@ a {
 
 .nine {
   grid-area: nine;
-}
-
-.img9 {
-  display: block;
-  margin-left: auto;
-  transition: 1s;
-}
-
-.img3 {
-  transition: 1s;
-}
-
-.mark {
-  background-color: #d6d6d6 ;
 }
 
 .text4 {
