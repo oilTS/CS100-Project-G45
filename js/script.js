@@ -118,43 +118,7 @@ const config = {
     validateEmail();
     validateDescription();
   }
-  
-  // Function to fetch activity types from the backend
-  async function fetchActivityTypes() {
-    try {
-      const response = await fetch(`http://${window.location.hostname}:${port}/getActivityType`);
-      if (response.ok) {
-        const data = await response.json();
-        return data;
-      } else {
-        console.error("Failed to fetch activity types.");
-        return [];
-      }
-    } catch (error) {
-      console.error("An error occurred while fetching activity types:", error);
-      return [];
-    }
-  }
-  
-  // Function to populate activity types in the select element
-  function populateActivityTypes(activityTypes) {
-    const activityTypeSelect = document.getElementById("activityType");
-  
-    for (const type of activityTypes) {
-      const option = document.createElement("option");
-      option.value = type.id;
-      option.textContent = type.value;
-      activityTypeSelect.appendChild(option);
-    }
-  }
-  
-  // Event listener when the page content has finished loading
-  document.addEventListener("DOMContentLoaded", async () => {
-    const activityTypes = await fetchActivityTypes();
-    populateActivityTypes(activityTypes);
-  });
-  
-  // Function to submit the form
+
   // Function to submit the form
   async function submitForm(event) {
     event.preventDefault();
