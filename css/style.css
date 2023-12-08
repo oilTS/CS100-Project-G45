@@ -3,12 +3,6 @@ html {
   font-size: 18px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -45,9 +39,6 @@ a {
   font-size: 1.5rem;
 }
 
-.TS {
-  border-radius: 50%;
-}
 /*respon navbar*/
 @media screen and (max-width:576px) {
   .logo {
@@ -92,39 +83,48 @@ a {
   grid-template-rows: repeat(auto,auto);
   grid-template-areas: "one two two"
                        "three four four"
-                       "five six seven"
                        "footer footer footer"
   
 }
 
+.TS {
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.NE {
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*mobile*/
 @media screen and (max-width:576px) {
   .grid-container {
     grid-template-columns: repeat(1,1fr);
     grid-template-areas: "one"
                          "two"
-                         "four"
                          "three"
-                         "five"
-                         "six"
-                         "seven"
+                         "four"
                          "footer"
   }
-  
-  .two {
-    margin: auto;
-  }
-  .six {
-    margin: auto;
-  }
+
   .one {
     margin: auto;
   }
-  .three {
-    grid-area: three;
-    list-style-position: inside;
-    margin-left: 0rem;
+  .two {
+    margin: auto;
   }
-
+  .three {
+    margin: auto;
+  }
+  .four {
+    margin: auto
+  }
+  
   }
 
   @media  screen and (max-width:768px) and (min-width:576px) {
@@ -133,22 +133,7 @@ a {
       grid-template-columns: repeat(2,1fr);
       grid-template-areas: "one two"
                            "three four"
-                           "five six"
-                           "five seven"
                            "footer footer"
-  }
-  .six {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-  .three {
-    grid-area: three;
-    list-style-position: inside;
-    margin-left: 1rem;
-  }
-  .vdo {
-    transition: 2s ease-out;
   }
   }
 
@@ -191,25 +176,10 @@ a {
   grid-area: five;
 }
 
-.six {
-  grid-area: six;
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.seven {
-  grid-area: seven;
-}
-
 .footer {
   grid-area: footer;
   background: #333;
   height: 6rem;
-}
-
-.nine {
-  grid-area: nine;
 }
 
 .text4 {
