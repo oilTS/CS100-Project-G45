@@ -9,6 +9,36 @@ const config = {
     backendUrl: "http://localhost:8000/", // Default backend URL
   };
   const port = 8000;
+
+  const lighttheme = document.getElementById("light");
+  const darktheme = document.getElementById("dark");
+  lighttheme.addEventListener("click", () => {
+    updateTheme();
+  });
+  darktheme.addEventListener("click", () => {
+    updateTheme();
+  });
+
+  function updateTheme() {
+    const lighttheme = document.getElementById("light");
+    if (lighttheme.checked) {
+      root.style.setProperty('--color-primary', 'black');
+      root.style.setProperty('--color-secondary', '#888');
+      root.style.setProperty('--color-accent', '#ccc');
+      root.style.setProperty('--color-background', 'white');
+      root.style.setProperty('--color-highlight', 'skyblue');
+      root.style.setProperty('--color-approved', 'green');
+      root.style.setProperty('--color-error', 'red');
+    } else {
+      root.style.setProperty('--color-primary', 'white');
+      root.style.setProperty('--color-secondary', '#999');
+      root.style.setProperty('--color-accent', '#444');
+      root.style.setProperty('--color-background', 'black');
+      root.style.setProperty('--color-highlight', '#e3f');
+      root.style.setProperty('--color-approved', 'lightblue');
+      root.style.setProperty('--color-error', 'orange');
+    }
+  }
   
   // Function to validate Firstname and Lastname
   function validateName() {
