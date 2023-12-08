@@ -91,12 +91,32 @@ const config = {
     }
     return true;
   }
+
+  function validateDescription() {
+    const descriptionInput = document.getElementById("description");
+    const errorElement = document.getElementById("descriptionError");
+    const lengthCounter = document.getElementById("characterCount");
+    const inputLength = descriptionInput.value.length;
+
+    lengthCounter.textContent = inputLength + '/200';
+
+    if (inputLength > 200) {
+      errorElement.textContent = "Description must not exceeds 200 characters.";
+      fullnameInput.style.borderColor = rs.getPropertyValue('--color-error');
+      return false;
+    } else {
+      errorElement.textContent = ""; // Clear the error message when valid
+      fullnameInput.style.borderColor = rs.getPropertyValue('--color-approved');
+    }
+    return true;
+  }
   
   // Function to validate form inputs on user input
   function validateFormOnInput() {
     validateName();
     validateStudentID();
     validateEmail();
+    validateDescription();
   }
   
   // Function to fetch activity types from the backend
@@ -140,7 +160,7 @@ const config = {
     event.preventDefault();
   
     // Validate form inputs before submission
-    if (!validateName() || !validateStudentID() || !validateEmail()) {
+    if (!validateName() || !validateStudentID() || !validateEmail() || !validateDescription) {
       return;
     }
   
@@ -216,4 +236,4 @@ const config = {
     .getElementById("studentID")
     .addEventListener("input", validateStudentID);
   document.getElementById("email").addEventListener("input", validateEmail);
-  
+  document.getElementById("description").addEventListener("input", validateDescription);
