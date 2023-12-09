@@ -3,6 +3,15 @@ html {
   font-size: 18px;
 }
 
+.content {
+  color: #242424;
+  font-weight: 600;
+  text-align: center;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -70,19 +79,18 @@ a {
 
 .span1 {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  margin-left: 1rem;
+  margin-left: 0rem;
 }
 
 .grid-container {
   display: grid;
-  grid-gap: 0px;
-  column-gap: 10px;      
-  row-gap: 50px;
-  padding: 5px;
-  justify-content: space-between;
-  align-items: center;                           
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: stretch;
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 20px;                         
   grid-template-columns: repeat(3,1fr);
-  grid-template-rows: repeat(auto,auto);
+  grid-template-rows: repeat(3,auto);
   grid-template-areas: "one two two"
                        "three four four"
                        "footer footer footer"
@@ -91,10 +99,14 @@ a {
 
 .TS {
   border-radius: 50%;
+  justify-content: center;
+  align-items: center;  
 }
 
 .NE {
   border-radius: 50%;
+  justify-content: center;
+  align-items: center;  
 }
 
 /*mobile*/
@@ -149,7 +161,7 @@ a {
 
 .one {
   grid-area: one;
-  align-items: center; 
+  align-items: center;
 }
 
 .two {
@@ -172,17 +184,3 @@ a {
   height: 6rem;
 }
 
-.text4 {
-  font-size: 22px;
-  transition: 1s;
-}
-
-.text3::before {  
-  transform: scaleX(0);
-  transform-origin: bottom right;
-}
-
-.text3:hover::before {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
