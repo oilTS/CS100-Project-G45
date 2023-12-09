@@ -26,6 +26,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   height: 80px;
 }
 
@@ -35,9 +36,8 @@ nav {
 
 .menu li {
   list-style: none;
-  padding: 1rem;
-  margin-left: 0rem;
-  margin-right: 0rem;
+  padding: 0rem;
+  margin-left: 2rem;
   text-align: center;
   transition: 0.5s;
 }
