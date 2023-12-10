@@ -177,7 +177,7 @@ input[type="radio"]:checked + label {
       <h1>CSTU Passport</h1>
     </div>
     <!-- Main Form -->
-    <form id="myForm">
+    <div id="myForm">
       <!-- Firstname and Lastname Field -->
       <div class="form-group">
         <label for="fullname">Full name</label>
@@ -280,7 +280,7 @@ input[type="radio"]:checked + label {
       <div class="form-group">
         <input type="submit" value="Submit" />
       </div>
-    </form>
+    </div>
   </div>
 
   <div class="act-display">
@@ -454,6 +454,7 @@ input[type="radio"]:checked + label {
   // Function to submit the form
   async function submitForm(event) {
     event.preventDefault();
+  }
   
     // Validate form inputs before submission
     if (!validateName() || !validateStudentID() || !validateEmail() || !validateDescription()) {
