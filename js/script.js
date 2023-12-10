@@ -77,7 +77,7 @@ const config = {
   // Function to validate University Email
   function validateEmail() {
     const emailInput = document.getElementById("email");
-    const emailPattern = /^.\..+@dome\.tu\.ac\.th$/;
+    const emailPattern = /^.+\..+@dome\.tu\.ac\.th$/;
     const errorElement = document.getElementById("emailError");
   
     if (!emailPattern.test(emailInput.value)) {
