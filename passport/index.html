@@ -405,7 +405,7 @@ input[type="radio"]:checked + label {
     event.preventDefault();
   
     // Validate form inputs before submission
-    if (!validateName() || !validateStudentID() || !validateEmail() || !validateDescription) {
+    if (!validateName() || !validateStudentID() || !validateEmail() || !validateDescription()) {
       return;
     }
   
