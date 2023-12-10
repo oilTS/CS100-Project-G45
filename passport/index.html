@@ -7,9 +7,160 @@ modified from CSTU team for academic purpose
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <title>CSTU Activity Form</title>
   <link rel="stylesheet" href=".././form.css">
+  -->
+  <title>CSTU Activity Form</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
+
+:root {
+    --color-primary: black;
+    --color-secondary: #888;
+    --color-accent: #ccc;
+    --color-background: white;
+    --color-highlight: skyblue;
+    --color-approved: green;
+    --color-error: red;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--color-primary);
+    background-color: var(--color-background);
+  }
+
+.form-header{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.theme {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--color-secondary);
+  width: 200px;
+  height: 40px;
+  border-radius: 1000px;
+  box-shadow: inset 0.5px 0.5px 2px 0 var(--color-accent);
+}
+
+input[type="radio"] {
+  appearance: none;
+  display: none;
+}
+
+.radio-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  border-radius: 1000px;
+  overflow: hidden;
+  transition: linear 0.3s;
+  color: var(--color-primary);
+}
+
+input[type="radio"]:checked + label {
+  background-color: var(--color-highlight);
+  color: var(--color-background);
+  font-weight: 900;
+  transition: 0.3s;
+}
+  
+  /* Styling for the form container */
+  .form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid var(--color-accent);
+    border-radius: 7px;
+  }
+  
+  /* Center-align the heading and add margin at the bottom */
+  .form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for each form group */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for form group labels */
+  .form-group label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  /* Styling for various form input types */
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group select,
+  .form-group textarea,
+  .form-group input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid;
+    color: var(--color-primary);
+    border-color: var(--color-accent);
+    border-radius: 4px;
+    background-color: var(--color-background);
+    box-sizing: border-box;
+  }
+  
+  /* Allow vertical resizing for textareas */
+  .form-group textarea {
+    resize: vertical;
+  }
+  
+  /* Styling for select dropdowns */
+  .form-group select {
+    width: 100%;
+  }
+  
+  /* Styling for the submit button */
+  .form-group input[type="submit"] {
+    background-color: #4caf50;
+    color: var(--color-background);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Styling for small helper text */
+  .form-group small {
+    font-size: 12px;
+    color: var(--color-secondary);
+  }
+  
+  /* New styles for error messages */
+  
+  /* Position the error message relatively within the form group */
+  .form-group {
+    position: relative;
+  }
+  
+  /* Styling for error messages */
+  .error {
+    color: var(--color-error);
+    display: block;
+    font-size: 10px;
+    margin-top: 5px;
+  }
+  </style>
 </head>
 <body>
   <!-- Form Container -->
@@ -131,6 +282,206 @@ modified from CSTU team for academic purpose
   </div>
 
   <!-- JavaScript -->
-  <script src=".././script.js"></script>
+  <script>
+    const config = {
+    backendUrl: "http://localhost:8000/", // Default backend URL
+  };
+  const port = 8000;
+
+  var root = document.querySelector(':root');
+  var rs = getComputedStyle(root);
+
+  const lighttheme = document.getElementById("light");
+  const darktheme = document.getElementById("dark");
+  lighttheme.addEventListener("click", () => {
+    updateTheme();
+  });
+  darktheme.addEventListener("click", () => {
+    updateTheme();
+  });
+
+  function updateTheme() {
+    const lighttheme = document.getElementById("light");
+    if (lighttheme.checked) {
+      root.style.setProperty('--color-primary', 'black');
+      root.style.setProperty('--color-secondary', '#888');
+      root.style.setProperty('--color-accent', '#ccc');
+      root.style.setProperty('--color-background', 'white');
+      root.style.setProperty('--color-highlight', 'skyblue');
+      root.style.setProperty('--color-approved', 'green');
+      root.style.setProperty('--color-error', 'red');
+    } else {
+      root.style.setProperty('--color-primary', 'white');
+      root.style.setProperty('--color-secondary', '#999');
+      root.style.setProperty('--color-accent', '#444');
+      root.style.setProperty('--color-background', 'black');
+      root.style.setProperty('--color-highlight', '#e3f');
+      root.style.setProperty('--color-approved', 'lightblue');
+      root.style.setProperty('--color-error', 'orange');
+    }
+  }
+  
+  // Function to validate Firstname and Lastname
+  function validateName() {
+    const fullnameInput = document.getElementById("fullname");
+    const names = fullnameInput.value.trim().split(" ");
+    const errorElement = document.getElementById("fullnameError");
+  
+    if (names.length !== 2) {
+      errorElement.textContent = "Please enter both your Firstname and Lastname.";
+      fullnameInput.style.borderColor = rs.getPropertyValue('--color-error');
+      return false;
+    } else {
+      errorElement.textContent = ""; // Clear the error message when valid
+      fullnameInput.style.borderColor = rs.getPropertyValue('--color-approved');
+    }
+    return true;
+  }
+  
+  // Function to validate Student ID
+  function validateStudentID() {
+    const studentIDInput = document.getElementById("studentID");
+    const studentIDPattern = /^\d{10}$/;
+    const errorElement = document.getElementById("studentIDError");
+  
+    if (!studentIDPattern.test(studentIDInput.value)) {
+      errorElement.textContent = "Please enter a 10-digit Student ID.";
+      studentIDInput.style.borderColor = rs.getPropertyValue('--color-error');
+      return false;
+    } else {
+      errorElement.textContent = ""; // Clear the error message when valid
+      studentIDInput.style.borderColor = rs.getPropertyValue('--color-approved');
+    }
+    return true;
+  }
+  
+  // Function to validate University Email
+  function validateEmail() {
+    const emailInput = document.getElementById("email");
+    const emailPattern = /^.+\..+@dome\.tu\.ac\.th$/;
+    const errorElement = document.getElementById("emailError");
+  
+    if (!emailPattern.test(emailInput.value)) {
+      errorElement.textContent =
+        "Please provide a valid university email.";
+      emailInput.style.borderColor = rs.getPropertyValue('--color-error');
+      return false;
+    } else {
+      errorElement.textContent = ""; // Clear the error message when valid
+      emailInput.style.borderColor = rs.getPropertyValue('--color-approved');
+    }
+    return true;
+  }
+
+  function validateDescription() {
+    const descriptionInput = document.getElementById("description");
+    const errorElement = document.getElementById("descriptionError");
+    const lengthCounter = document.getElementById("characterCount");
+    const inputLength = descriptionInput.value.length;
+
+    lengthCounter.textContent = inputLength + '/200';
+
+    if (inputLength > 200) {
+      errorElement.textContent = "Description must not exceeds 200 characters.";
+      fullnameInput.style.borderColor = rs.getPropertyValue('--color-error');
+      return false;
+    } else {
+      errorElement.textContent = ""; // Clear the error message when valid
+      fullnameInput.style.borderColor = rs.getPropertyValue('--color-approved');
+    }
+    return true;
+  }
+  
+  // Function to validate form inputs on user input
+  function validateFormOnInput() {
+    validateName();
+    validateStudentID();
+    validateEmail();
+    validateDescription();
+  }
+
+  // Function to submit the form
+  async function submitForm(event) {
+    event.preventDefault();
+  
+    // Validate form inputs before submission
+    if (!validateName() || !validateStudentID() || !validateEmail() || !validateDescription) {
+      return;
+    }
+  
+    const startDateInput = document.getElementById("startDate").value;
+    const endDateInput = document.getElementById("endDate").value;
+    const startDate = new Date(startDateInput);
+    const endDate = new Date(endDateInput);
+  
+    if (endDate <= startDate) {
+      alert("End datetime should be after the start datetime.");
+      return;
+    }
+  
+    // Create the data object to send to the backend
+    const formData = new FormData(event.target);
+    const data = {
+      first_name: formData.get("fullname").split(" ")[0],
+      last_name: formData.get("fullname").split(" ")[1],
+      student_id: parseInt(formData.get("studentID")),
+      email: formData.get("email"),
+      title: formData.get("workTitle"),
+      type_of_work_id: parseInt(formData.get("activityType")),
+      academic_year: parseInt(formData.get("academicYear")) - 543,
+      semester: parseInt(formData.get("semester")),
+      start_date: formData.get("startDate"),
+      end_date: formData.get("endDate"),
+      location: formData.get("location"),
+      description: formData.get("description")
+    };
+  
+    console.log(data);
+  
+    try {
+      // Send data to the backend using POST request
+      const response = await fetch(`http://${window.location.hostname}:${port}/record`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Form data submitted successfully!");
+  
+        // Format JSON data for display
+        const formattedData = Object.entries(responseData.data)
+          .map(([key, value]) => `"${key}": "${value}"`)
+          .join("\n");
+  
+        // Display success message with formatted data
+        alert(responseData.message + "\n" + formattedData);
+  
+        document.getElementById("myForm").reset();
+      } else {
+        console.error("Failed to submit form data.");
+  
+        // Display error message
+        alert("Failed to submit form data. Please try again.");
+      }
+    } catch (error) {
+      console.error("An error occurred while submitting form data:", error);
+    }
+  }
+  
+  // Event listener for form submission
+  document.getElementById("myForm").addEventListener("submit", submitForm);
+  
+  // Event listeners for input validation on user input
+  document.getElementById("fullname").addEventListener("input", validateName);
+  document
+    .getElementById("studentID")
+    .addEventListener("input", validateStudentID);
+  document.getElementById("email").addEventListener("input", validateEmail);
+  document.getElementById("description").addEventListener("input", validateDescription);
+  </script>
 </body>
 </html>
