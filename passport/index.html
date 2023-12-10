@@ -79,7 +79,8 @@ input[type="radio"]:checked + label {
 }
   
   /* Styling for the form container */
-  .form-container {
+  .form-container,
+  .act-display {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -94,7 +95,8 @@ input[type="radio"]:checked + label {
   }
   
   /* Styling for each form group */
-  .form-group {
+  .form-group,
+  .act-title {
     margin-bottom: 20px;
   }
   
@@ -281,6 +283,55 @@ input[type="radio"]:checked + label {
     </form>
   </div>
 
+  <div class="act-display">
+      <div class="act-header">
+        <p id="act-type">Type</p>
+        <p id="act-semester">9/2599</p>
+        <h2 id="act-title">Activity</h2>
+        <span id="act-description">description</span>
+      </div>
+      <div class="act-content">
+          <h4 id="act-name">Name</h4>
+          <p id="act-sid">0000000000</p>
+        <div class="act-datetime">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-4 h-4"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <p id="inp-time">date</p>
+        </div>
+        <div class="act-location">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-4 h-4"
+          >
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <p id="inp-location">location</p>
+        </div>
+      </div>
+  </div>
+
   <!-- JavaScript -->
   <script>
     const config = {
@@ -437,7 +488,17 @@ input[type="radio"]:checked + label {
     };
   
     console.log(data);
-  
+
+    document.getElementById("act-name").innerHTML = formData.get("fullname");
+    document.getElementById("act-sid").innerHTML = parseInt(formData.get("studentID"));
+    document.getElementById("act-title").innerHTML = formData.get("workTitle");
+    document.getElementById("act-type").innerHTML = formData.get("activityType");
+    document.getElementById("act-semester").innerHTML = parseInt(formData.get("semester")) + "/" + parseInt(formData.get("academicYear"));
+    document.getElementById("inp-datetime").innerHTML = formData.get("startDate") + " to " + formData.get("endDate");
+    document.getElementById("inp-location").innerHTML = formData.get("location");
+    document.getElementById("act-description").innerHTML = formData.get("description");
+    
+    /*
     try {
       // Send data to the backend using POST request
       const response = await fetch(`http://${window.location.hostname}:${port}/record`, {
@@ -471,6 +532,7 @@ input[type="radio"]:checked + label {
       console.error("An error occurred while submitting form data:", error);
     }
   }
+  */
   
   // Event listener for form submission
   document.getElementById("myForm").addEventListener("submit", submitForm);
