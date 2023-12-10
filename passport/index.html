@@ -383,11 +383,11 @@ input[type="radio"]:checked + label {
 
     if (inputLength > 200) {
       errorElement.textContent = "Description must not exceeds 200 characters.";
-      fullnameInput.style.borderColor = rs.getPropertyValue('--color-error');
+      descriptionInput.style.borderColor = rs.getPropertyValue('--color-error');
       return false;
     } else {
       errorElement.textContent = ""; // Clear the error message when valid
-      fullnameInput.style.borderColor = rs.getPropertyValue('--color-approved');
+      descriptionInput.style.borderColor = rs.getPropertyValue('--color-approved');
     }
     return true;
   }
