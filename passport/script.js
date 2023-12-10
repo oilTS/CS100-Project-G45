@@ -1,14 +1,14 @@
 /*
-modify from CSTU team for academic purpose
+modified from CSTU team for academic purpose
 */
-
-var root = document.querySelector(':root');
-var rs = getComputedStyle(root);
 
 const config = {
     backendUrl: "http://localhost:8000/", // Default backend URL
   };
   const port = 8000;
+
+  var root = document.querySelector(':root');
+  var rs = getComputedStyle(root);
 
   const lighttheme = document.getElementById("light");
   const darktheme = document.getElementById("dark");
