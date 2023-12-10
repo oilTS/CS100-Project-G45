@@ -162,6 +162,10 @@ input[type="radio"]:checked + label {
     font-size: 10px;
     margin-top: 5px;
   }
+
+  .act-display {
+    display: none;
+  }
   </style>
 </head>
 <body>
@@ -452,8 +456,7 @@ input[type="radio"]:checked + label {
   }
 
   // Function to submit the form
-  async function submitForm(event) {
-    event.preventDefault();
+  async function submitForm() {
   
     // Validate form inputs before submission
     if (!validateName() || !validateStudentID() || !validateEmail() || !validateDescription()) {
@@ -466,10 +469,14 @@ input[type="radio"]:checked + label {
     const endDate = new Date(endDateInput);
   
     if (endDate <= startDate) {
+
+    
       alert("End datetime should be after the start datetime.");
       return;
     }
   
+    document.getElementById("form-container").style.display = 'none';
+    document.getElementById("act-display").style.display = 'block';
     // Create the data object to send to the backend
     const formData = new FormData(event.target);
     const data = {
