@@ -489,14 +489,14 @@ input[type="radio"]:checked + label {
   
     console.log(data);
 
-    document.getElementById("act-name").innerHTML = formData.get("fullname");
-    document.getElementById("act-sid").innerHTML = parseInt(formData.get("studentID"));
-    document.getElementById("act-title").innerHTML = formData.get("workTitle");
-    document.getElementById("act-type").innerHTML = formData.get("activityType");
-    document.getElementById("act-semester").innerHTML = parseInt(formData.get("semester")) + "/" + parseInt(formData.get("academicYear"));
-    document.getElementById("inp-datetime").innerHTML = formData.get("startDate") + " to " + formData.get("endDate");
-    document.getElementById("inp-location").innerHTML = formData.get("location");
-    document.getElementById("act-description").innerHTML = formData.get("description");
+    document.getElementById("act-name").innerHTML = document.getElementById("fullname").value;
+    document.getElementById("act-sid").innerHTML = document.getElementById("studentID").value;
+    document.getElementById("act-title").innerHTML = document.getElementById("workTitle").value;
+    document.getElementById("act-type").innerHTML = document.getElementById("activityType").value;
+    document.getElementById("act-semester").innerHTML = document.getElementById("semester").value + "/" + document.getElementById("academicYear").value;
+    document.getElementById("inp-datetime").innerHTML = document.getElementById("startDate").value + " to " + document.getElementById("endDate").value;
+    document.getElementById("inp-location").innerHTML = document.getElementById("location").value;
+    document.getElementById("act-description").innerHTML = document.getElementById("description").value;
     
     /*
     try {
